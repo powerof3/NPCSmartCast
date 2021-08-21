@@ -1,0 +1,12 @@
+{
+  "name": "npcsmartcast",
+  "version-string": "1.0.0",
+  "description": "Improves NPC Magic Casting",
+  "homepage": "",
+  "license": "MIT",
+  "dependencies": [
+    "boost-stl-interfaces",
+    "spdlog",
+    "xbyak"
+  ]
+}
