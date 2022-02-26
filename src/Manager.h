@@ -48,17 +48,18 @@ namespace Offensive
 			{
 				static bool SmartCast(RE::CombatInventoryItemMagicT<T, RE::CombatMagicCasterOffensive>* a_this, const RE::CombatController* a_controller)
 				{
-					if constexpr (std::is_same_v<T, RE::CombatInventoryItemShout>) {
-						auto actor = a_controller->actor;
-						if (!actor) {
-							actor = a_controller->actorHandle.get();
-						}
+					auto actor = a_controller->actor;
+					if (!actor) {
+						actor = a_controller->actorHandle.get();
+					}
+
+				    if constexpr (std::is_same_v<T, RE::CombatInventoryItemShout>) {
 						if (actor) {
                             const auto process = actor->currentProcess;
                             const auto highProcess = process ? process->high : nullptr;
                             const auto voiceTimer = highProcess ? highProcess->voiceRecoveryTime : 0.0f;
 
-							if (voiceTimer < RE::GameSettingCollection::GetSingleton()->GetSetting("fCombatInventoryShoutMaxRecoveryTime")->GetFloat()) {
+						    if (voiceTimer < RE::GameSettingCollection::GetSingleton()->GetSetting("fCombatInventoryShoutMaxRecoveryTime")->GetFloat()) {
 								return false;
 							}
 						}
