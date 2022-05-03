@@ -64,7 +64,11 @@ namespace Offensive
 				const auto mgef = a_this->effect ? a_this->effect->baseEffect : nullptr;
 
 				if (target && mgef) {
-					const auto resistVar = mgef->data.resistVariable;
+					if (!mgef->conditions.IsTrue(actor, target)) {
+						return false;
+					}
+
+				    const auto resistVar = mgef->data.resistVariable;
 
 					auto weakness = util::offensive::get_elemental_weakness(target);
 					if (weakness == resistVar) {

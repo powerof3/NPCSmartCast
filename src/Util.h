@@ -43,7 +43,7 @@ namespace util
 
 		inline RE::ActorValue get_target_weakness(const RE::NiPointer<RE::Actor>& a_target)
 		{
-			const auto magic = a_target->GetActorValue(RE::ActorValue::kMagicka);
+		    const auto magic = a_target->GetActorValue(RE::ActorValue::kMagicka);
 			const auto stamina = a_target->GetActorValue(RE::ActorValue::kStamina);
 
 			const auto rightHand = a_target->GetEquippedObject(false);
