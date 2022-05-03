@@ -24,8 +24,7 @@ using RNG = SKSE::stl::RNG;
 
 namespace stl
 {
-	using SKSE::stl::to_underlying;
-	using SKSE::stl::is_in;
+	using namespace SKSE::stl;
 
 	void asm_replace(std::uintptr_t a_from, std::size_t a_size, std::uintptr_t a_to);
 
@@ -42,5 +41,13 @@ namespace stl
 		T::func = vtbl.write_vfunc(idx, T::thunk);
 	}
 }
+
+#ifdef SKYRIM_AE
+#	define REL_ID(se, ae) ae
+#	define OFFSET(se, ae) ae
+#else
+#	define REL_ID(se, ae) se
+#	define OFFSET(se, ae) se
+#endif
 
 #include "Version.h"
